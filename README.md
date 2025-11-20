@@ -4,24 +4,24 @@
 
 ## Run
 
-'''bash
+```bash
 gz sim building_robot.sdf
-'''
+```
 
 ## controler
 
 in terminal 1:
-'''bash
+```bash
 ros2 run ros_gz_bridge parameter_bridge /cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist
-'''
+```
 
 in terminal 2:
-'''bash
+```bash
 gz sim building_robot.sdf
-'''
+```
 
 in terminal 3: 
-'''bash
+```bash
 sudo apt install ros-jazzy-teleop-twist-keyboard
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
-'''
+```
