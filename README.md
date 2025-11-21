@@ -24,5 +24,7 @@ gz sim building_robot.sdf
 in terminal 3: 
 ```bash
 sudo apt install ros-jazzy-teleop-twist-keyboard
+```
+```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
