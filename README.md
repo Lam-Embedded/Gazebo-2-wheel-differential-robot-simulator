@@ -1,4 +1,4 @@
-# GAZEBO SIMULATOR
+# GAZEBO SIMULATOR BASIC ROBOT
 
 ![alt text](image/image.png)
 
@@ -28,3 +28,5 @@ sudo apt install ros-jazzy-teleop-twist-keyboard
 ```bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
+# GAZEBO SIMULATOR MY ROBOT
+![alt text](image/image1.png)

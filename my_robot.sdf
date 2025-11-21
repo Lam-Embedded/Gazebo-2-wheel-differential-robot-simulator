@@ -1,0 +1,214 @@
+<?xml version="1.0" ?>
+<sdf version="1.10">
+    <world name="car_world">
+        <physics name="1ms" type="ignored">
+            <max_step_size>0.001</max_step_size>
+            <real_time_factor>1.0</real_time_factor>
+        </physics>
+        <plugin
+            filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics">
+        </plugin>
+        <plugin
+            filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
+        </plugin>
+        <plugin
+            filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
+        </plugin>
+
+        <light type="directional" name="sun">
+            <cast_shadows>true</cast_shadows>
+            <pose>0 0 10 0 0 0</pose>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+            <attenuation>
+                <range>1000</range>
+                <constant>0.9</constant>
+                <linear>0.01</linear>
+                <quadratic>0.001</quadratic>
+            </attenuation>
+            <direction>-0.5 0.1 -0.9</direction>
+        </light>
+
+        <model name="ground_plane">
+            <static>true</static>
+            <link name="link">
+                <collision name="collision">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    </plane>
+                </geometry>
+                </collision>
+                <visual name="visual">
+                <geometry>
+                    <plane>
+                    <normal>0 0 1</normal>
+                    <size>100 100</size>
+                    </plane>
+                </geometry>
+                <material>
+                    <ambient>0.8 0.8 0.8 1</ambient>
+                    <diffuse>0.8 0.8 0.8 1</diffuse>
+                    <specular>0.8 0.8 0.8 1</specular>
+                </material>
+                </visual>
+            </link>
+        </model>
+
+        <model name='myRobot' canonical_link='chassis'>
+            <pose relative_to='world'>0 0 0 0 0 0</pose>
+
+            <!-- robot's body -->
+            <link name='chassis'>
+                <pose relative_to='__model__'>-0.07 -0.0404145188433 0.03175 0 0 0</pose>
+                <inertial> <!--inertial properties of the link mass, inertia matix-->
+                    <mass>3</mass>
+                    <inertia>
+                        <ixx>0.1</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.1</iyy>
+                        <iyz>0</iyz>
+                        <izz>0.1</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/robot.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                    <!--let's add color to our link-->
+                    <material>
+                        <ambient>0.0 0.0 1.0 1</ambient>
+                        <diffuse>0.0 0.0 1.0 1</diffuse>
+                        <specular>0.0 0.0 1.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'> <!--todo: describe why we need the collision-->
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/robot.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                </collision>
+            </link>
+
+            <link name='wheel_1'>
+                <pose relative_to="chassis">0.07 0.135 0 1.5708 0 0</pose> <!--angles are in radian-->
+                <inertial>
+                    <mass>2</mass>
+                    <inertia>
+                        <ixx>0.145833</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.145833</iyy>
+                        <iyz>0</iyz>
+                        <izz>0.125</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                    <material>
+                        <ambient>1.0 0.0 0.0 1</ambient>
+                        <diffuse>1.0 0.0 0.0 1</diffuse>
+                        <specular>1.0 0.0 0.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                </collision>
+            </link>
+
+            <link name='wheel_2'>
+                <pose relative_to="chassis">-0.0119134295109 -0.0068782217351 0 1.5708 0 2.0944</pose> <!--angles are in radian-->
+                <inertial>
+                    <mass>2</mass>
+                    <inertia>
+                        <ixx>0.145833</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.145833</iyy>
+                        <iyz>0</iyz>
+                        <izz>0.125</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                    <material>
+                        <ambient>1.0 0.0 0.0 1</ambient>
+                        <diffuse>1.0 0.0 0.0 1</diffuse>
+                        <specular>1.0 0.0 0.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                </collision>
+            </link>
+
+            <link name='wheel_3'>
+                <pose relative_to="chassis">0.1519134295109 -0.0068782217351 0 1.5708 0 -2.0944</pose> <!--angles are in radian-->
+                <inertial>
+                    <mass>2</mass>
+                    <inertia>
+                        <ixx>0.145833</ixx>
+                        <ixy>0</ixy>
+                        <ixz>0</ixz>
+                        <iyy>0.145833</iyy>
+                        <iyz>0</iyz>
+                        <izz>0.125</izz>
+                    </inertia>
+                </inertial>
+                <visual name='visual'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                    <material>
+                        <ambient>1.0 0.0 0.0 1</ambient>
+                        <diffuse>1.0 0.0 0.0 1</diffuse>
+                        <specular>1.0 0.0 0.0 1</specular>
+                    </material>
+                </visual>
+                <collision name='collision'>
+                    <geometry>
+                        <mesh>
+                            <uri>model://home/dev/01.work_space/18.test_gazebo/meshes/2.5inch-65276-omni-wheel.stl</uri>
+                            <scale>0.001 0.001 0.001</scale>
+                        </mesh>
+                    </geometry>
+                </collision>
+            </link>
+
+
+        </model>
+
+    </world>
+</sdf>
