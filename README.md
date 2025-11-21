@@ -1,14 +1,15 @@
-# GAZEBO SIMILATOR
+# GAZEBO SIMULATOR
 
 ![alt text](image/image.png)
 
 ## Run
 
+Go to the folder containing the file building_robot.sdf
 ```bash
 gz sim building_robot.sdf
 ```
 
-## controler
+## controller
 
 in terminal 1:
 ```bash
