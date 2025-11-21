@@ -207,6 +207,64 @@
                 </collision>
             </link>
 
+            <!--connecting these links together using joints-->
+            <joint name='first_wheel_joint' type='revolute'> <!--continous joint is not supported yet-->
+                <pose relative_to='wheel_1'/>
+                <parent>chassis</parent>
+                <child>wheel_1</child>
+                <axis>
+                    <xyz expressed_in='wheel_1'>0 0 1</xyz> <!--can be defined as any frame or even arbitrary frames-->
+                    <limit>
+                        <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                        <upper>1.79769e+308</upper>     <!--positive infinity-->
+                    </limit>
+                </axis>
+            </joint>
+
+            <joint name='second_wheel_joint' type='revolute'> <!--continous joint is not supported yet-->
+                <pose relative_to='wheel_2'/>
+                <parent>chassis</parent>
+                <child>wheel_2</child>
+                <axis>
+                    <xyz expressed_in='wheel_2'>0 0 1</xyz> <!--can be defined as any frame or even arbitrary frames-->
+                    <limit>
+                        <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                        <upper>1.79769e+308</upper>     <!--positive infinity-->
+                    </limit>
+                </axis>
+            </joint>
+
+            <joint name='third_wheel_joint' type='revolute'> <!--continous joint is not supported yet-->
+                <pose relative_to='wheel_3'/>
+                <parent>chassis</parent>
+                <child>wheel_3</child>
+                <axis>
+                    <xyz expressed_in='wheel_3'>0 0 1</xyz> <!--can be defined as any frame or even arbitrary frames-->
+                    <limit>
+                        <lower>-1.79769e+308</lower>    <!--negative infinity-->
+                        <upper>1.79769e+308</upper>     <!--positive infinity-->
+                    </limit>
+                </axis>
+            </joint>
+
+            <plugin
+                filename="gz-sim-joint-controller-system"
+                name="gz::sim::systems::JointController">
+                <joint_name>first_wheel_joint</joint_name>
+                
+            </plugin>
+            <plugin
+                filename="gz-sim-joint-controller-system"
+                name="gz::sim::systems::JointController">
+                <joint_name>second_wheel_joint</joint_name>
+                
+            </plugin>
+            <plugin
+                filename="gz-sim-joint-controller-system"
+                name="gz::sim::systems::JointController">
+                <joint_name>third_wheel_joint</joint_name>
+               
+            </plugin>
 
         </model>
 
